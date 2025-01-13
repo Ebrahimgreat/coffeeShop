@@ -18,7 +18,7 @@ class _cartState extends State<cart> {
       totalPrice = 0;
       return;
     }
-    totalPrice += provider.cart[0].totalPrice ?? 0;
+    totalPrice += provider.cart[0].totalPrice;
   }
 
   void initState() {
@@ -30,7 +30,9 @@ class _cartState extends State<cart> {
     return Scaffold(
       appBar: AppBar(
         backgroundColor: Colors.black,
-        title: const Text('Cart', style: TextStyle(color: Colors.white)),
+        title: const Text('Cart', style: TextStyle(color: Colors.white,
+        fontWeight: FontWeight.bold)),
+      
         leading: MaterialButton(
           onPressed: () {},
           child: Icon(
@@ -149,27 +151,27 @@ class _cartState extends State<cart> {
                                       minWidth: 4,
                                     ),
                                     Container(
-                                      width: 50, // Width of the box
-                                      height: 30, // Height of the box
+                                      width: 50, 
+                                      height: 30, 
                                       alignment: Alignment
-                                          .center, // Center the text inside
+                                          .center,
                                       decoration: BoxDecoration(
                                         color:
-                                            Color(0xFF0C0F14), // Inside color
+                                            Color(0xFF0C0F14), 
                                         borderRadius: BorderRadius.circular(
-                                            10), // Rounded corners
+                                            10), 
                                         border: Border.all(
                                           color:
-                                              Color(0xFFD17842), // Border color
-                                          width: 2, // Border width
+                                              Color(0xFFD17842), 
+                                          width: 2,
                                         ),
                                       ),
                                       child: Text(
-                                        '${cart.quantity[0]}', // Replace with the dynamic quantity value
+                                        '${cart.quantity[0]}', 
                                         style: TextStyle(
-                                          color: Colors.white, // Text color
+                                          color: Colors.white, 
                                           fontSize:
-                                              16, // Adjust font size as needed
+                                              16,
                                         ),
                                       ),
                                     ),
@@ -248,19 +250,19 @@ class _cartState extends State<cart> {
                                       minWidth: 4,
                                     ),
                                     Container(
-                                      width: 50, // Width of the box
-                                      height: 30, // Height of the box
+                                      width: 50, 
+                                      height: 30, 
                                       alignment: Alignment
-                                          .center, // Center the text inside
+                                          .center, 
                                       decoration: BoxDecoration(
                                         color:
-                                            Color(0xFF0C0F14), // Inside color
+                                            Color(0xFF0C0F14), 
                                         borderRadius: BorderRadius.circular(
-                                            10), // Rounded corners
+                                            10), 
                                         border: Border.all(
                                           color:
-                                              Color(0xFFD17842), // Border color
-                                          width: 2, // Border width
+                                              Color(0xFFD17842), 
+                                          width: 2, 
                                         ),
                                       ),
                                       child: Text(
@@ -347,15 +349,15 @@ class _cartState extends State<cart> {
                                       minWidth: 4,
                                     ),
                                     Container(
-                                      width: 50, // Width of the box
-                                      height: 30, // Height of the box
+                                      width: 50, 
+                                      height: 30, 
                                       alignment: Alignment
-                                          .center, // Center the text inside
+                                          .center,
                                       decoration: BoxDecoration(
                                         color:
-                                            Color(0xFF0C0F14), // Inside color
+                                            Color(0xFF0C0F14), 
                                         borderRadius: BorderRadius.circular(
-                                            10), // Rounded corners
+                                            10), 
                                         border: Border.all(
                                           color:
                                               Color(0xFFD17842), 
@@ -409,25 +411,62 @@ class _cartState extends State<cart> {
                       );
                     })),
             SizedBox(
-              height: 0.1 * screenHeight,
+              height: 0.40 * screenHeight,
             ),
             Container(
                 child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-                Text(
-                  'Total Price: PKR ${totalPrice}',
-                  style: GoogleFonts.poppins(color: Colors.white),
+                RichText(
+                  textAlign: TextAlign.center, 
+                  text: TextSpan(
+                    style: GoogleFonts.poppins(
+                      color: Colors.white, 
+                      fontSize: 16, 
+                    ),
+                    children: [
+                      TextSpan(
+                        text: 'Total Price\n', 
+                        style: TextStyle(
+                          color: Color(0xFFAEAEAE),
+                          )
+                      ),
+                      TextSpan(
+                        text: 'PKR ${totalPrice}', 
+                        style: TextStyle(
+                          color: Color(0xFFFFFFFF),
+                          fontWeight: FontWeight.bold, 
+                          fontSize:
+                              18, 
+                        ),
+                      ),
+                    ],
+                  ),
                 ),
+
+
                 MaterialButton(
                   onPressed: () {
                     Navigator.pushNamed(context, '/payment');
                   },
                   color: Colors.green,
-                  minWidth: 200.0,
-                  height: 50.0,
-                  child: Text('Pay', style: TextStyle(color: Colors.white)),
-                )
+                  minWidth: 200.0, 
+                  height: 50.0, 
+                  shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(
+                        25), 
+                  ),
+                  child: Text(
+                    'Pay',
+                    style: TextStyle(
+                      color: Colors.white,
+                      fontWeight:
+                          FontWeight.bold, 
+                      fontSize: 16, 
+                    ),
+                  ),
+                ),
+
               ],
             ))
           ]);
