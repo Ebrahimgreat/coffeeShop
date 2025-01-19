@@ -137,11 +137,11 @@ class _cartState extends State<cart> {
                                           print(totalPrice);
                                         });
 
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          const SnackBar(
-                                              content: Text('Added')),
-                                        );
+                                        // ScaffoldMessenger.of(context)
+                                        //     .showSnackBar(
+                                        //   const SnackBar(
+                                        //       content: Text('Added')),
+                                        // );
                                       },
                                       child: const Icon(
                                         Icons.add,
@@ -183,18 +183,21 @@ class _cartState extends State<cart> {
                                       onPressed: () {
                                         final provider =
                                             Provider.of<coffeeProvider>(context,
-                                                    listen: false)
-                                                .removeFromCart(
-                                                    cart.id, 'small');
-                                        setState(() {
-                                          totalPrice -= cart.SizePrice[0];
-                                        });
-
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          const SnackBar(
-                                              content: Text('Removed')),
-                                        );
+                                                listen: false);
+                                        if (cart.quantity[0] > 0) {
+                                          provider.removeFromCart(
+                                              cart.id, 'small');
+                                          setState(() {
+                                            totalPrice -= cart.SizePrice[0];
+                                          });
+                                        } else {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            const SnackBar(
+                                                content: Text(
+                                                    'Quantity cannot be less than 0')),
+                                          );
+                                        }
                                       },
                                       child: const Icon(
                                         Icons.remove,
@@ -236,11 +239,11 @@ class _cartState extends State<cart> {
                                           print(totalPrice);
                                         });
 
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          const SnackBar(
-                                              content: Text('Added')),
-                                        );
+                                        // ScaffoldMessenger.of(context)
+                                        //     .showSnackBar(
+                                        //   const SnackBar(
+                                        //       content: Text('Added')),
+                                        // );
                                       },
                                       child: const Icon(
                                         Icons.add,
@@ -282,19 +285,23 @@ class _cartState extends State<cart> {
                                       onPressed: () {
                                         final provider =
                                             Provider.of<coffeeProvider>(context,
-                                                    listen: false)
-                                                .removeFromCart(
-                                                    cart.id, 'medium');
-                                        setState(() {
-                                          totalPrice -= cart.SizePrice[1];
-                                        });
-
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          const SnackBar(
-                                              content: Text('Removed')),
-                                        );
+                                                listen: false);
+                                        if (cart.quantity[1] > 0) {
+                                          provider.removeFromCart(
+                                              cart.id, 'medium');
+                                          setState(() {
+                                            totalPrice -= cart.SizePrice[1];
+                                          });
+                                        } else {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            const SnackBar(
+                                                content: Text(
+                                                    'Quantity cannot be less than 0')),
+                                          );
+                                        }
                                       },
+
                                       child: const Icon(
                                         Icons.remove,
                                         color: Colors.white,
@@ -335,11 +342,11 @@ class _cartState extends State<cart> {
                                           print(totalPrice);
                                         });
 
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          const SnackBar(
-                                              content: Text('Added')),
-                                        );
+                                        // ScaffoldMessenger.of(context)
+                                        //     .showSnackBar(
+                                        //   const SnackBar(
+                                        //       content: Text('Added')),
+                                        // );
                                       },
                                       child: const Icon(
                                         Icons.add,
@@ -381,18 +388,21 @@ class _cartState extends State<cart> {
                                       onPressed: () {
                                         final provider =
                                             Provider.of<coffeeProvider>(context,
-                                                    listen: false)
-                                                .removeFromCart(
-                                                    cart.id, 'large');
-                                        setState(() {
-                                          totalPrice -= cart.SizePrice[2];
-                                        });
-
-                                        ScaffoldMessenger.of(context)
-                                            .showSnackBar(
-                                          const SnackBar(
-                                              content: Text('Removed')),
-                                        );
+                                                listen: false);
+                                        if (cart.quantity[2] > 0) {
+                                          provider.removeFromCart(
+                                              cart.id, 'large');
+                                          setState(() {
+                                            totalPrice -= cart.SizePrice[2];
+                                          });
+                                        } else {
+                                          ScaffoldMessenger.of(context)
+                                              .showSnackBar(
+                                            const SnackBar(
+                                                content: Text(
+                                                    'Quantity cannot be less than 0')),
+                                          );
+                                        }
                                       },
                                       child: const Icon(
                                         Icons.remove,
